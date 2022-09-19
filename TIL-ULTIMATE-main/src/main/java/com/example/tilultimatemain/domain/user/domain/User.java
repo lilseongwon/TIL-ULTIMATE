@@ -1,6 +1,5 @@
 package com.example.tilultimatemain.domain.user.domain;
 
-import com.example.tilultimatemain.domain.user.Sex;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
