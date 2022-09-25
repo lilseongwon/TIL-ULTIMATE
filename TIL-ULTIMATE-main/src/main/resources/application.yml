@@ -17,3 +17,11 @@ spring:
   jackson:
     property-naming-strategy: SNAKE_CASE
 
+jwt:
+  secret: ${SECRET_KEY}
+  access_exp: ${ACCESS_EXP}
+  refresh_exp: ${REFRESH_EXP}
+
+redis:
+  host: ${REDIS_HOST}
+  port: ${REDIS_PORT}
