@@ -14,7 +14,7 @@ public enum ErrorCode {
 
     INVALID_REFRESH_TOKEN(401-5, "Invalid Refresh Token"),
 
-    AUTH_NOT_FOUND(404-1, "Auth Not Found"),
+    USER_NOT_FOUND(404-1, "User Not Found"),
 
     POST_NOT_FOUND(404-2, "Post Not Found"),
 
