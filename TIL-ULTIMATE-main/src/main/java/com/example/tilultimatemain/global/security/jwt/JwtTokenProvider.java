@@ -26,12 +26,9 @@ public class JwtTokenProvider {
 
     private static final String ACCESS_KEY = "access";
     private static final String REFRESH_KEY = "refresh";
-    private static final String HEADER = "Authorization";
-    private static final String PREFIX = "Bearer ";
 
     private final RefreshTokenRepository refreshTokenRepository;
     private final JwtProperties jwtProperties;
-    private final AuthDetailsService authDetailsService;
 
     public TokenResponse generateTokens(String accountId) {
         String accessToken = generateToken(accountId, ACCESS_KEY, jwtProperties.getAccessExp());
@@ -57,40 +54,6 @@ public class JwtTokenProvider {
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + exp * 1000))
                 .compact();
-    }
-
-    public String resolveToken(HttpServletRequest request) {
-        String bearer = request.getHeader(HEADER);
-        return parseToken(bearer);
-    }
-
-    public String parseToken(String bearerToken) {
-        if (bearerToken != null && bearerToken.startsWith(PREFIX)) {
-            return bearerToken.replace(PREFIX, "");
-        }
-        return null;
-    }
-
-    public Authentication authentication(String token) {
-        UserDetails userDetails = authDetailsService.loadUserByUsername(getTokenSubject(token));
-        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
-    }
-
-    private String getTokenSubject(String token) {
-        return getTokenBody(token).getSubject();
-    }
-
-    private Claims getTokenBody(String token) {
-        try {
-            return Jwts.parser().setSigningKey(jwtProperties.getSecret())
-                    .parseClaimsJws(token).getBody();
-        } catch (SignatureException e) {
-            throw SignatureJwtException.EXCEPTION;
-        } catch (io.jsonwebtoken.ExpiredJwtException e) {
-            throw ExpiredJwtException.EXCEPTION;
-        } catch (Exception e) {
-            throw InvalidJwtException.EXCEPTION;
-        }
     }
 }
 
