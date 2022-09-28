@@ -3,6 +3,7 @@ package com.example.tilultimatemain.domain.user.facade;
 import com.example.tilultimatemain.domain.user.domain.User;
 import com.example.tilultimatemain.domain.user.domain.repository.UserRepository;
 import com.example.tilultimatemain.domain.user.exception.UserExistException;
+import com.example.tilultimatemain.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,5 +19,10 @@ public class UserFacade {
         Optional<User> user = userRepository.findByAccountId(accountId);
         if(user.isPresent())
             throw UserExistException.EXCEPTION;
+    }
+
+    public User getUserByAccountId(String accountId) {
+        return userRepository.findByAccountId(accountId)
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 }
