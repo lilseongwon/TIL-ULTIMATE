@@ -20,7 +20,7 @@ public enum ErrorCode {
 
     REFRESH_TOKEN_NOT_FOUND(404-3, "RefreshToken Not Found"),
 
-    EMAIL_EXIST(409, "Email Exist"),
+    USER_EXIST(409, "User Exist"),
 
     ALREADY_BOOK_EXIST(409, "Already Post Exist"), //아직 사용 안할 것
 
