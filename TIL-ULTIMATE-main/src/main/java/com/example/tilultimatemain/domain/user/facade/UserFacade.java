@@ -7,7 +7,6 @@ import com.example.tilultimatemain.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -15,14 +14,14 @@ import java.util.Optional;
 public class UserFacade {
     private final UserRepository userRepository;
 
-    public void checkUserExist(String accountId) {
-        Optional<User> user = userRepository.findByAccountId(accountId);
+    public void checkUserExist(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
         if(user.isPresent())
             throw UserExistException.EXCEPTION;
     }
 
-    public User getUserByAccountId(String accountId) {
-        return userRepository.findByAccountId(accountId)
+    public User getUserByAccountId(String email) {
+        return userRepository.findByEmail(email)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 }

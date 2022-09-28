@@ -16,7 +16,7 @@ public class User {
     private Long id;
 
     @Column(length = 20, nullable = false)
-    private String accountId;
+    private String email;
 
     @Column(length = 20, nullable = false)
     private String password;
@@ -25,8 +25,8 @@ public class User {
     private Sex sex;
 
     @Builder
-    public User(String accountId, String password, Sex sex) {
-        this.accountId = accountId;
+    public User(String email, String password, Sex sex) {
+        this.email = email;
         this.password = password;
         this.sex = sex;
     }

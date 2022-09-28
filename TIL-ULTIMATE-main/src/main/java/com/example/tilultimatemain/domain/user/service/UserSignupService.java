@@ -18,11 +18,11 @@ public class UserSignupService {
 
     @Transactional
     public void execute(UserSignupRequest request) {
-        userFacade.checkUserExist(request.getAccountId());
+        userFacade.checkUserExist(request.getEmail());
 
         userRepository.save(
                 User.builder()
-                        .accountId(request.getAccountId())
+                        .email(request.getEmail())
                         .password(encoder.encode(request.getPassword()))
                         .sex(request.getSex())
                         .build());
