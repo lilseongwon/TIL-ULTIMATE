@@ -22,7 +22,7 @@ public enum ErrorCode {
 
     USER_EXIST(409, "User Exist"),
 
-    ALREADY_POST_EXIST(409, "Already Post Exist"), 
+    ALREADY_POST_EXIST(409, "Already Post Exist"),
 
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
 
