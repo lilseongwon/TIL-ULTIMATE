@@ -1,7 +1,7 @@
 package com.example.tilultimatemain.global.security;
 
 import com.example.tilultimatemain.global.security.jwt.FilterConfig;
-import com.example.tilultimatemain.global.security.jwt.JwtTokenProvider;
+import com.example.tilultimatemain.global.security.jwt.JwtTokenResolver;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +18,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final JwtTokenProvider jwtTokenProvider;
+    private final JwtTokenResolver jwtTokenResolver;
     private final ObjectMapper objectMapper;
 
     @Bean
@@ -38,7 +38,7 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
 
                 .and()
-                .apply(new FilterConfig(jwtTokenProvider, objectMapper))
+                .apply(new FilterConfig(jwtTokenResolver, objectMapper))
                 .and().build();
     }
 
