@@ -25,3 +25,10 @@ jwt:
 redis:
   host: ${REDIS_HOST}
   port: ${REDIS_PORT}
+
+auth:
+  google:
+    base-url: ${GOOGLE-BASE-URL}
+    client-id: ${GOOGLE-CLIENT-ID}
+    client-secret: ${GOOGLE-SECRET}
+    redirect-url: ${GOOGLE-REDIRECT-URL}
