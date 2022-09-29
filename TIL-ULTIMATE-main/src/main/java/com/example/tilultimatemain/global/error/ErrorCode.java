@@ -24,7 +24,13 @@ public enum ErrorCode {
 
     ALREADY_POST_EXIST(409, "Already Post Exist"),
 
+    OTHER_BAD_REQUEST(400, "Other server bad request"),
+    OTHER_UNAUTHORIZED(401, "Other server unauthorized"),
+    OTHER_FORBIDDEN(403, "Other server forbidden"),
+    OTHER_EXPIRED_TOKEN(419, "Other server expired token"),
+
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
+
 
     private final int status;
     private final String message;
