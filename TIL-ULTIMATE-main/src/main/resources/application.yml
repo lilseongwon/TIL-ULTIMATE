@@ -18,13 +18,13 @@ spring:
     property-naming-strategy: SNAKE_CASE
 
 jwt:
-  secret: ${SECRET_KEY}
-  access_exp: ${ACCESS_EXP}
-  refresh_exp: ${REFRESH_EXP}
+  secret: ${SECRET-KEY}
+  access_exp: ${ACCESS-EXP}
+  refresh_exp: ${REFRESH-EXP}
 
 redis:
-  host: ${REDIS_HOST}
-  port: ${REDIS_PORT}
+  host: ${REDIS-HOST}
+  port: ${REDIS-PORT}
 
 auth:
   google:
@@ -32,3 +32,8 @@ auth:
     client-id: ${GOOGLE-CLIENT-ID}
     client-secret: ${GOOGLE-SECRET}
     redirect-url: ${GOOGLE-REDIRECT-URL}
+
+  kakao:
+    base-url: ${KAKAO-BASE-URL}
+    client-id: ${KAKAO-CLIENT-ID}
+    redirect-url: ${KAKAO-REDIRECT-URL}
