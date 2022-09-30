@@ -8,6 +8,7 @@ spring:
     password: ${PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
@@ -37,3 +38,5 @@ auth:
     base-url: ${KAKAO-BASE-URL}
     client-id: ${KAKAO-CLIENT-ID}
     redirect-url: ${KAKAO-REDIRECT-URL}
+
+spring.main.allow-bean-definition-overriding: true
