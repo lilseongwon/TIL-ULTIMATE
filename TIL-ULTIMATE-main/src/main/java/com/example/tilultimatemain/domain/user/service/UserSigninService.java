@@ -28,11 +28,12 @@ public class UserSigninService {
         if(!passwordEncoder.matches(password, user.getPassword()))
             throw PasswordMismatchException.EXCEPTION;
 
-        TokenResponse tokenResponse = jwtTokenProvider.generateTokens(email);
+        String accessToken = jwtTokenProvider.generateAccessToken(email);
+        String refreshToken = jwtTokenProvider.generateRefreshToken(email);
 
         return TokenResponse.builder()
-                .accessToken(tokenResponse.getAccessToken())
-                .refreshToken(tokenResponse.getRefreshToken())
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
                 .build();
     }
 }
