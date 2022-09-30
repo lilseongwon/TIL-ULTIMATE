@@ -21,17 +21,26 @@ public class User {
     @Column(length = 20, nullable = false)
     private String password;
 
-    @Column(length = 6, nullable = false)
-    private Sex sex;
+    @Column(length = 50, nullable = false)
+    private String address;
+
+    @Column(length = 10, nullable = false)
+    private String name;
 
     @Builder
-    public User(String email, String password, Sex sex) {
+    public User(String email, String password, String address, String name) {
         this.email = email;
         this.password = password;
-        this.sex = sex;
+        this.address = address;
+        this.name = name;
     }
 
     public void updatePw(String password) {
         this.password = password;
+    }
+
+    public void updateInfo(String address, String name) {
+        this.address = address;
+        this.name = name;
     }
 }
