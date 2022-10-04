@@ -40,4 +40,7 @@ auth:
     client-secret: ${KAKAO-SECRET}
     redirect-url: ${KAKAO-REDIRECT-URL}
 
+admin:
+  email: ${ADMIN-EMAIL}
+
 spring.main.allow-bean-definition-overriding: true
