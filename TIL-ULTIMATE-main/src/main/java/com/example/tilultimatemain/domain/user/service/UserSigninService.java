@@ -23,10 +23,9 @@ public class UserSigninService {
         String email = request.getEmail();
         String password = request.getPassword();
 
-        User user = userFacade.getUserByAccountId(email);
+        User user = userFacade.getUserByEmail(email);
 
-        if(!passwordEncoder.matches(password, user.getPassword()))
-            throw PasswordMismatchException.EXCEPTION;
+        userFacade.checkPassword(user, request.getPassword());
 
         String accessToken = jwtTokenProvider.generateAccessToken(email);
         String refreshToken = jwtTokenProvider.generateRefreshToken(email);

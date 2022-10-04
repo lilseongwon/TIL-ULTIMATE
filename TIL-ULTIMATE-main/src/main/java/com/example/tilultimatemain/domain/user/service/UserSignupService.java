@@ -24,7 +24,6 @@ public class UserSignupService {
                 User.builder()
                         .email(request.getEmail())
                         .password(encoder.encode(request.getPassword()))
-                        .address(request.getAddress())
                         .name(request.getName())
                         .build());
     }
