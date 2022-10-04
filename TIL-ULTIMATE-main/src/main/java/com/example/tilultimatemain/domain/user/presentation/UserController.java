@@ -18,6 +18,7 @@ public class UserController {
     private final UserUpdatePwService userUpdatePwService;
     private final WithdrawlService withdrawlService;
     private final LogoutService logoutService;
+    private final TokenRefreshService tokenRefreshService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -25,8 +26,7 @@ public class UserController {
         userSignupService.execute(request);
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PostMapping("/login")
+    @PostMapping("/auth")
     public TokenResponse signIn(@RequestBody UserSigninRequest request) {
         return userSigninService.execute(request);
     }
@@ -47,5 +47,10 @@ public class UserController {
     @DeleteMapping("/logout")
     public void logout() {
         logoutService.execute();
+    }
+
+    @PatchMapping("/auth")
+    public TokenResponse tokenRefresh(@RequestHeader("X-Refresh-Token") String refreshToken) {
+        return tokenRefreshService.execute(refreshToken);
     }
 }
