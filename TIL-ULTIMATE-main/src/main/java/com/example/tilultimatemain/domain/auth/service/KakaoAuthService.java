@@ -11,6 +11,7 @@ import com.example.tilultimatemain.global.security.jwt.JwtTokenProvider;
 import com.example.tilultimatemain.infrastructure.feign.client.KakaoAuth;
 import com.example.tilultimatemain.infrastructure.feign.client.KakaoInfo;
 import com.example.tilultimatemain.infrastructure.feign.dto.request.KakaoCodeRequest;
+import com.example.tilultimatemain.infrastructure.feign.dto.response.GoogleInfoResponse;
 import com.example.tilultimatemain.infrastructure.feign.dto.response.KakaoInfoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,32 +37,32 @@ public class KakaoAuthService {
                 KakaoCodeRequest.builder()
                         .code(URLDecoder.decode(code, StandardCharsets.UTF_8))
                         .clientId(kakaoProperties.getClientId())
+                        .clientSecret(kakaoProperties.getClientSecret())
                         .redirectUri(kakaoProperties.getRedirectUrl())
                         .build()
         ).getAccessToken();
+    KakaoInfoResponse kakaoInfoResponse = kakaoInfo.kakaoInfo(accessToken);
 
-        KakaoInfoResponse kakaoInfoResponse = kakaoInfo.kakaoInfo(accessToken);
+    String email = kakaoInfoResponse.getEmail();
+    String name = kakaoInfoResponse.getName();
 
-        String email = kakaoInfoResponse.getEmail();
-        String name = kakaoInfoResponse.getName();
-
-        String refreshToken =jwtTokenProvider.generateRefreshToken(email);
+    String refreshToken =jwtTokenProvider.generateRefreshToken(email);
 
         refreshTokenRepository.save(
                 RefreshToken.builder()
-                        .email(email)
+                .email(email)
                         .token(refreshToken)
                         .ttl(jwtProperties.getRefreshExp() * 1000)
-                        .build()
+            .build()
         );
-        createUser(email, name);
+    createUser(email, name);
 
         return TokenResponse
                 .builder()
                 .accessToken(jwtTokenProvider.generateAccessToken(email))
-                .refreshToken(refreshToken)
+            .refreshToken(refreshToken)
                 .build();
-    }
+}
 
     private void createUser(String email, String name) {
         if (userRepository.findByEmail(email).isEmpty()) {
