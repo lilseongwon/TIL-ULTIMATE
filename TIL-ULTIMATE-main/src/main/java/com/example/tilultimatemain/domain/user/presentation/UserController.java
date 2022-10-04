@@ -4,6 +4,7 @@ import com.example.tilultimatemain.domain.auth.presentation.response.TokenRespon
 import com.example.tilultimatemain.domain.user.presentation.request.UserSigninRequest;
 import com.example.tilultimatemain.domain.user.presentation.request.UserSignupRequest;
 import com.example.tilultimatemain.domain.user.presentation.request.UserUpdatePwRequest;
+import com.example.tilultimatemain.domain.user.presentation.response.QueryUserInfoResponse;
 import com.example.tilultimatemain.domain.user.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ public class UserController {
     private final WithdrawlService withdrawlService;
     private final LogoutService logoutService;
     private final TokenRefreshService tokenRefreshService;
+    private final QueryMyinfoService queryMyinfoService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -52,5 +54,10 @@ public class UserController {
     @PatchMapping("/auth")
     public TokenResponse tokenRefresh(@RequestHeader("X-Refresh-Token") String refreshToken) {
         return tokenRefreshService.execute(refreshToken);
+    }
+
+    @GetMapping("/")
+    public QueryUserInfoResponse queryMyInfo() {
+        return queryMyinfoService.execute();
     }
 }
