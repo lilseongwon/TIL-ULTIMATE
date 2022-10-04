@@ -6,23 +6,32 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum ErrorCode {
-    PASSWORD_MISMATCH(401-1, "Password Mismatch"),
+    PASSWORD_MISMATCH(401, "Password Mismatch"),
+    EXPIRED_JWT(401, "Expired Jwt"),
+    SIGNATURE_JWT(401, "Signature Jwt"),
+    INVALID_JWT(401, "Invalid Jwt"),
 
-    EXPIRED_JWT(401-2, "Expired Jwt"),
-    SIGNATURE_JWT(401-3, "Signature Jwt"),
-    INVALID_JWT(401-4, "Invalid Jwt"),
+    NO_PERMISSION_TO_ACCESS_FOOD(401, "No Permission To Access Food"),
+    NO_PERMISSION_TO_ACCESS_ORDER(401, "No Permission To Access Order"),
 
-    INVALID_REFRESH_TOKEN(401-5, "Invalid Refresh Token"),
+    INVALID_REFRESH_TOKEN(401, "Invalid Refresh Token"),
 
-    USER_NOT_FOUND(404-1, "User Not Found"),
+    NEED_MORE_MONEY(403, "Need More Money"),
 
-    POST_NOT_FOUND(404-2, "Post Not Found"),
 
-    REFRESH_TOKEN_NOT_FOUND(404-3, "RefreshToken Not Found"),
+
+    USER_NOT_FOUND(404, "User Not Found"),
+    FOOD_NOT_FOUND(404, "Food Not Found"),
+    ORDER_NOT_FOUND(404, "Order Not Found"),
+
+
+    REFRESH_TOKEN_NOT_FOUND(404, "RefreshToken Not Found"),
 
     USER_EXIST(409, "User Exist"),
 
-    ALREADY_POST_EXIST(409, "Already Post Exist"),
+    ALREADY_FOOD_EXIST(409, "Already Food Exist"),
+
+
 
     OTHER_BAD_REQUEST(400, "Other server bad request"),
     OTHER_UNAUTHORIZED(401, "Other server unauthorized"),
