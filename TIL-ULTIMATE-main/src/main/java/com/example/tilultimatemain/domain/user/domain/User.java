@@ -21,26 +21,33 @@ public class User {
     @Column(length = 20, nullable = false)
     private String password;
 
-    @Column(length = 50, nullable = false)
-    private String address;
-
     @Column(length = 10, nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private Integer money;
+
     @Builder
-    public User(String email, String password, String address, String name) {
+    public User(String email, String password, String name, Integer money) {
         this.email = email;
         this.password = password;
-        this.address = address;
         this.name = name;
+        this.money = money;
     }
 
     public void updatePw(String password) {
         this.password = password;
     }
 
-    public void updateInfo(String address, String name) {
-        this.address = address;
+    public void updateInfo(String name) {
         this.name = name;
+    }
+
+    public void addMoney() {
+        this.money = 15000;
+    }
+
+    public void subMoney() {
+        this.money = 0;
     }
 }
