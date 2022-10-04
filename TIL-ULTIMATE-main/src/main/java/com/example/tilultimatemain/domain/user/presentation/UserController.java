@@ -4,10 +4,7 @@ import com.example.tilultimatemain.domain.auth.presentation.response.TokenRespon
 import com.example.tilultimatemain.domain.user.presentation.request.UserSigninRequest;
 import com.example.tilultimatemain.domain.user.presentation.request.UserSignupRequest;
 import com.example.tilultimatemain.domain.user.presentation.request.UserUpdatePwRequest;
-import com.example.tilultimatemain.domain.user.service.UserSigninService;
-import com.example.tilultimatemain.domain.user.service.UserSignupService;
-import com.example.tilultimatemain.domain.user.service.UserUpdatePwService;
-import com.example.tilultimatemain.domain.user.service.WithdrawlService;
+import com.example.tilultimatemain.domain.user.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +17,7 @@ public class UserController {
     private final UserSigninService userSigninService;
     private final UserUpdatePwService userUpdatePwService;
     private final WithdrawlService withdrawlService;
+    private final LogoutService logoutService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -43,5 +41,11 @@ public class UserController {
     @DeleteMapping("/")
     public void withdrawl() {
         withdrawlService.execute();
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/logout")
+    public void logout() {
+        logoutService.execute();
     }
 }
