@@ -37,6 +37,7 @@ auth:
   kakao:
     base-url: ${KAKAO-BASE-URL}
     client-id: ${KAKAO-CLIENT-ID}
+    client-secret: ${KAKAO-SECRET}
     redirect-url: ${KAKAO-REDIRECT-URL}
 
 spring.main.allow-bean-definition-overriding: true
