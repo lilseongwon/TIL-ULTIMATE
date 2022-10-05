@@ -5,11 +5,14 @@ import com.example.tilultimatemain.domain.user.domain.repository.UserRepository;
 import com.example.tilultimatemain.domain.user.exception.PasswordMismatchException;
 import com.example.tilultimatemain.domain.user.exception.UserExistException;
 import com.example.tilultimatemain.domain.user.exception.UserNotFoundException;
+import com.example.tilultimatemain.global.exception.NoPermissionException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -17,6 +20,9 @@ import java.util.Optional;
 public class UserFacade {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
+    @Value("${admin.id}")
+    private String ADMIN;
 
     public void checkUserExist(String email) {
         Optional<User> user = userRepository.findByEmail(email);
@@ -38,5 +44,10 @@ public class UserFacade {
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+    }
+
+    public void checkPermission() {
+        if(!(Objects.equals(getCurrentUser().getEmail(), ADMIN)))
+            throw NoPermissionException.EXCEPTION;
     }
 }
