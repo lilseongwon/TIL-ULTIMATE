@@ -3,7 +3,7 @@ package com.example.tilultimatemain.domain.food.service;
 import com.example.tilultimatemain.domain.food.domain.Food;
 import com.example.tilultimatemain.domain.food.facade.FoodFacade;
 import com.example.tilultimatemain.domain.food.domain.repository.FoodRepository;
-import com.example.tilultimatemain.domain.food.presentation.request.AddFoodRequest;
+import com.example.tilultimatemain.domain.food.presentation.request.FoodRequest;
 import com.example.tilultimatemain.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class AddFoodService {
     private final FoodFacade foodFacade;
 
     @Transactional
-    public void addFood(AddFoodRequest request) {
+    public void execute(FoodRequest request) {
         userFacade.checkPermission();
         foodFacade.checkFoodExist(request.getName());
 
