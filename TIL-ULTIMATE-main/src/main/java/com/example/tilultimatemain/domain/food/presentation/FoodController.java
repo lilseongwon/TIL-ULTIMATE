@@ -17,7 +17,7 @@ public class FoodController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/")
-    public void addFood(@RequestBody FoodRequest request) {
+    public void addFood(@RequestBody @Valid FoodRequest request) {
         addFoodService.execute(request);
     }
 
