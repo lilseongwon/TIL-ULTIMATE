@@ -25,18 +25,22 @@ public class Food {
 
     private String explain;
 
+    private String picture;
+
     @Builder
-    public Food(String name, Category category, Integer stock, String explain) {
+    public Food(String name, Category category, Integer stock, String explain, String picture) {
         this.name = name;
         this.category = category;
         this.stock = stock;
         this.explain = explain;
+        this.picture = picture;
     }
 
-    public void updateFood(String name, Category category, Integer stock, String explain) {
+    public void updateFood(String name, Category category, Integer stock, String explain, String picture) {
         this.name = name;
         this.category = category;
         this.stock = stock;
         this.explain = explain;
+        this.picture = picture;
     }
 }
