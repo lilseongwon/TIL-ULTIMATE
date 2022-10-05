@@ -1,4 +1,4 @@
-package com.example.tilultimatemain.domain.order.domain;
+package com.example.tilultimatemain.domain.food.domain;
 
 public enum Category {
     DOSIRAK,

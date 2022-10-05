@@ -11,8 +11,7 @@ public enum ErrorCode {
     SIGNATURE_JWT(401, "Signature Jwt"),
     INVALID_JWT(401, "Invalid Jwt"),
 
-    NO_PERMISSION_TO_ACCESS_FOOD(401, "No Permission To Access Food"),
-    NO_PERMISSION_TO_ACCESS_ORDER(401, "No Permission To Access Order"),
+    NO_PERMISSION(401, "No Permission"),
 
     INVALID_REFRESH_TOKEN(401, "Invalid Refresh Token"),
 
