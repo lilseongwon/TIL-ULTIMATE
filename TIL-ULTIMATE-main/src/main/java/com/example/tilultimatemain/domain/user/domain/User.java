@@ -24,15 +24,11 @@ public class User {
     @Column(length = 10, nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private Integer money;
-
     @Builder
-    public User(String email, String password, String name, Integer money) {
+    public User(String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.money = money;
     }
 
     public void updatePw(String password) {
@@ -41,13 +37,5 @@ public class User {
 
     public void updateInfo(String name) {
         this.name = name;
-    }
-
-    public void addMoney() {
-        this.money = 15000;
-    }
-
-    public void subMoney() {
-        this.money = 0;
     }
 }
