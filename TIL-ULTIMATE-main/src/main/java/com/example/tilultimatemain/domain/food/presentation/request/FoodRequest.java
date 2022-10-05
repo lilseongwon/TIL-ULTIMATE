@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 
 @Getter
 @NoArgsConstructor
-public class AddFoodRequest {
+public class FoodRequest {
 
     @NotBlank(message = "food는 Null 또는 공백 또는 띄어쓰기를 허용하지 않습니다.")
     @Size(min = 1, max = 50, message = "name은 최대 50자 입니다.")
