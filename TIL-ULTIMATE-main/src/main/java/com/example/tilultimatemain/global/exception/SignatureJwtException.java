@@ -5,7 +5,7 @@ import com.example.tilultimatemain.global.error.ErrorCode;
 
 public class SignatureJwtException extends CustomException {
 
-    public static final SignatureJwtException EXCEPTION =
+    public static final CustomException EXCEPTION =
             new SignatureJwtException();
 
     private SignatureJwtException() {

@@ -5,7 +5,7 @@ import com.example.tilultimatemain.global.error.ErrorCode;
 
 public class InvalidRefreshTokenException extends CustomException {
 
-    public static final InvalidRefreshTokenException EXCEPTION =
+    public static final CustomException EXCEPTION =
             new InvalidRefreshTokenException();
 
     private InvalidRefreshTokenException() {

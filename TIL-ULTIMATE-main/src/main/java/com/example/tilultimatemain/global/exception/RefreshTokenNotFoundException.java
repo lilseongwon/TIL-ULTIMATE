@@ -5,7 +5,7 @@ import com.example.tilultimatemain.global.error.ErrorCode;
 
 public class RefreshTokenNotFoundException extends CustomException {
 
-    public static final RefreshTokenNotFoundException EXCEPTION =
+    public static final CustomException EXCEPTION =
             new RefreshTokenNotFoundException();
 
     private RefreshTokenNotFoundException() {
