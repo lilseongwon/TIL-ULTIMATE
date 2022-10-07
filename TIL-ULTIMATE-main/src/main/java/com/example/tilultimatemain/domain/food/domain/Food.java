@@ -20,27 +20,26 @@ public class Food {
 
     private Category category;
 
-    @Column(nullable = false)
-    private Integer stock;
-
     private String explain;
 
     private String picture;
 
+    private Integer price;
+
     @Builder
-    public Food(String name, Category category, Integer stock, String explain, String picture) {
+    public Food(String name, Category category, String explain, String picture, Integer price) {
         this.name = name;
         this.category = category;
-        this.stock = stock;
         this.explain = explain;
         this.picture = picture;
+        this.price = price;
     }
 
-    public void updateFood(String name, Category category, Integer stock, String explain, String picture) {
+    public void updateFood(String name, Category category, String explain, String picture, Integer price) {
         this.name = name;
         this.category = category;
-        this.stock = stock;
         this.explain = explain;
         this.picture = picture;
+        this.price = price;
     }
 }
