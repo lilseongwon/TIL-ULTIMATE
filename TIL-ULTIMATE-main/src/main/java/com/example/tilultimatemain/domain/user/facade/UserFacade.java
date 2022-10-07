@@ -21,7 +21,7 @@ public class UserFacade {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @Value("${admin.id}")
+    @Value("${admin.email}")
     private String ADMIN;
 
     public void checkUserExist(String email) {
