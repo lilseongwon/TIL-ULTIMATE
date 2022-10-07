@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -24,4 +25,7 @@ public class FoodRequest {
     private String explain;
 
     private String picture;
+
+    @NotNull(message = "price는 Null을 허용하지 않습니다.")
+    private Integer price;
 }

@@ -27,6 +27,7 @@ public class AddFoodService {
                         .category(request.getCategory())
                         .explain(request.getExplain())
                         .picture(request.getPicture())
+                        .price(request.getPrice())
                         .build());
     }
 }
