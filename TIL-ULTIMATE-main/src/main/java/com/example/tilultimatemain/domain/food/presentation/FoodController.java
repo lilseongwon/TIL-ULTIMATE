@@ -1,5 +1,6 @@
 package com.example.tilultimatemain.domain.food.presentation;
 
+import com.example.tilultimatemain.domain.food.domain.Category;
 import com.example.tilultimatemain.domain.food.presentation.request.FoodRequest;
 import com.example.tilultimatemain.domain.food.presentation.response.CategoryListResponse;
 import com.example.tilultimatemain.domain.food.presentation.response.QueryFoodListResponse;
@@ -20,6 +21,7 @@ public class FoodController {
     private final DeleteFoodService deleteFoodService;
     private final QueryCategoryListService queryCategoryListService;
     private final QueryFoodsByKeywordService queryFoodsByKeywordService;
+    private final QueryFoodsByCategoryService queryFoodsByCategoryService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/")
@@ -48,4 +50,11 @@ public class FoodController {
     public QueryFoodListResponse queryFoodByKeyword(@RequestParam(value = "keyword")String keyword) {
         return queryFoodsByKeywordService.execute(keyword);
     }
+
+    @GetMapping("/")
+    public QueryFoodListResponse queryFoodByTag(@RequestParam(value = "category")Category category) {
+        return queryFoodsByCategoryService.execute(category);
+    }
+
+    
 }
