@@ -21,7 +21,6 @@ public class QueryMyinfoService {
         return QueryUserInfoResponse.builder()
                 .email(user.getEmail())
                 .name(user.getName())
-                .money(user.getMoney())
                 .build();
     }
 }
