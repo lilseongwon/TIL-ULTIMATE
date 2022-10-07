@@ -15,10 +15,6 @@ public enum ErrorCode {
 
     INVALID_REFRESH_TOKEN(401, "Invalid Refresh Token"),
 
-    NEED_MORE_MONEY(403, "Need More Money"),
-
-
-
     USER_NOT_FOUND(404, "User Not Found"),
     FOOD_NOT_FOUND(404, "Food Not Found"),
     ORDER_NOT_FOUND(404, "Order Not Found"),
@@ -29,7 +25,6 @@ public enum ErrorCode {
     USER_EXIST(409, "User Exist"),
 
     ALREADY_FOOD_EXIST(409, "Already Food Exist"),
-
 
 
     OTHER_BAD_REQUEST(400, "Other server bad request"),
