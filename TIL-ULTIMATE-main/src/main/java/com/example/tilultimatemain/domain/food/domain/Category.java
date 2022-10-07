@@ -1,11 +1,14 @@
 package com.example.tilultimatemain.domain.food.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@JsonFormat(shape = JsonFormat.Shape.STRING)
+@AllArgsConstructor
 public enum Category {
-    DOSIRAK,
-    BINSIK,
-    CHINA,
-    JAPAN,
-    FAST_FOOD,
-    SOUP,
-    DESERT
+    PASTA,
+    SALAD,
+    RICE
 }
