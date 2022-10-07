@@ -17,6 +17,6 @@ public class UpdateFoodService {
         userFacade.checkPermission();
         Food food = foodFacade.getFoodById(id);
         food.updateFood(request.getName(), request.getCategory(),
-                request.getStock(), request.getExplain(), request.getPicture());
+                request.getStock(), request.getExplain(), request.getPicture(), request.getPrice());
     }
 }
