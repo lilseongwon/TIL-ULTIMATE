@@ -22,6 +22,7 @@ public class FoodController {
     private final QueryCategoryListService queryCategoryListService;
     private final QueryFoodsByKeywordService queryFoodsByKeywordService;
     private final QueryFoodsByCategoryService queryFoodsByCategoryService;
+    private final QueryFoodListService queryFoodListService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/")
@@ -56,5 +57,8 @@ public class FoodController {
         return queryFoodsByCategoryService.execute(category);
     }
 
-    
+    @GetMapping("/")
+    public QueryFoodListResponse queryFoodList() {
+        return queryFoodListService.execute();
+    }
 }
