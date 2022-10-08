@@ -19,7 +19,7 @@ public class AddOrderService {
     private final FoodFacade foodFacade;
     private final OrderFacade orderFacade;
 
-    public void addOrder(Long id, AddOrderRequest request) {
+    public void execute(Long id, AddOrderRequest request) {
         User user = userFacade.getCurrentUser();
         Food food = foodFacade.getFoodById(id);
 
