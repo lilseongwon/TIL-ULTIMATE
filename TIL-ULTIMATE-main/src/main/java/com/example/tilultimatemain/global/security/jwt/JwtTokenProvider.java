@@ -2,7 +2,6 @@ package com.example.tilultimatemain.global.security.jwt;
 
 import com.example.tilultimatemain.domain.auth.domain.RefreshToken;
 import com.example.tilultimatemain.domain.auth.domain.repository.RefreshTokenRepository;
-import com.example.tilultimatemain.domain.auth.presentation.response.TokenResponse;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +37,7 @@ public class JwtTokenProvider {
 
     private String generateToken(String email, String type, Long exp) {
         return Jwts.builder()
-                .signWith(SignatureAlgorithm.ES256, jwtProperties.getSecret())
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecret())
                 .setSubject(email)
                 .setHeaderParam("typ", type)
                 .setIssuedAt(new Date())
