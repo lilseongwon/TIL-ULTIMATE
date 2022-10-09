@@ -44,17 +44,17 @@ public class FoodController {
         deleteFoodService.execute(id);
     }
 
-    @GetMapping("/tag")
+    @GetMapping("/tags")
     public CategoryListResponse queryCategory() {
         return queryCategoryListService.execute();
     }
 
-    @GetMapping("/")
+    @GetMapping("/title")
     public QueryFoodListResponse queryFoodByKeyword(@RequestParam(value = "keyword")String keyword) {
         return queryFoodsByKeywordService.execute(keyword);
     }
 
-    @GetMapping("/")
+    @GetMapping("/tag")
     public QueryFoodListResponse queryFoodByTag(@RequestParam(value = "category")Category category) {
         return queryFoodsByCategoryService.execute(category);
     }
