@@ -31,7 +31,7 @@ public class UserFacade {
     }
 
     public void checkPassword(User user, String password) {
-        if(!passwordEncoder.matches(user.getPassword(), password)) {
+        if(!passwordEncoder.matches(password, user.getPassword())) {
             throw PasswordMismatchException.EXCEPTION;
         }
     }
