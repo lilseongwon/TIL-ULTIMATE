@@ -43,4 +43,14 @@ auth:
 admin:
   email: ${ADMIN-EMAIL}
 
+cloud:
+  aws:
+    s3:
+      bucket: ${S3-BUCKET}
+    stack:
+      auto: false
+    credentials:
+      access-key: ${S3-ACCESS-KEY}
+      secret-key: ${S3-SECRET-KEY}
+
 spring.main.allow-bean-definition-overriding: true
