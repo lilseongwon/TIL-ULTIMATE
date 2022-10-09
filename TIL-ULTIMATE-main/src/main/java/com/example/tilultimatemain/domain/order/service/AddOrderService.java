@@ -10,6 +10,7 @@ import com.example.tilultimatemain.domain.user.domain.User;
 import com.example.tilultimatemain.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -19,6 +20,7 @@ public class AddOrderService {
     private final FoodFacade foodFacade;
     private final OrderFacade orderFacade;
 
+    @Transactional
     public void execute(Long id, AddOrderRequest request) {
         User user = userFacade.getCurrentUser();
         Food food = foodFacade.getFoodById(id);
