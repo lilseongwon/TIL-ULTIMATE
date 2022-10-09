@@ -16,10 +16,6 @@ public class UserSignupRequest {
     @Pattern(regexp = "(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+-=?/])[a-zA-Z0-9~!@#$%^&*()_+-=?/]{8,30}$", message = "password는 8-30자여야합니다.")
     private String password;
 
-    @NotNull(message = "address는 Null을 허용하지 않습니다.")
-    @Size(max = 50, message = "address는 50자 이내여야 합니다.")
-    private String address;
-
     @NotBlank(message = "name은 Null 또는 공백을 허용하지 않습니다.")
     @Size(max = 10, message = "name은 10자 이내여야 합니다.")
     private String name;
