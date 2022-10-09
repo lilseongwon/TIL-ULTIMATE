@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/user")
@@ -24,18 +26,18 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
-    public void signUp(@RequestBody UserSignupRequest request) {
+    public void signUp(@RequestBody @Valid UserSignupRequest request) {
         userSignupService.execute(request);
     }
 
     @PostMapping("/auth")
-    public TokenResponse signIn(@RequestBody UserSigninRequest request) {
+    public TokenResponse signIn(@RequestBody @Valid  UserSigninRequest request) {
         return userSigninService.execute(request);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PatchMapping("/password")
-    public void updatePw(@RequestBody UserUpdatePwRequest request) {
+    public void updatePw(@RequestBody @Valid UserUpdatePwRequest request) {
         userUpdatePwService.execute(request);
     }
 
