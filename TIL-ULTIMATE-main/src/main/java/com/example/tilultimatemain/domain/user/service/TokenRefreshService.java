@@ -28,12 +28,8 @@ public class TokenRefreshService {
     }
 
     private TokenResponse reIssue(String refreshToken) {
-        String parseToken = jwtTokenResolver.parseToken(refreshToken);
-        if (parseToken == null) {
-            throw InvalidRefreshTokenException.EXCEPTION;
-        }
 
-        RefreshToken redisRefreshToken = refreshTokenRepository.findByToken(parseToken)
+        RefreshToken redisRefreshToken = refreshTokenRepository.findByToken(refreshToken)
                 .orElseThrow(() -> RefreshTokenNotFoundException.EXCEPTION);
 
         String email = redisRefreshToken.getEmail();
