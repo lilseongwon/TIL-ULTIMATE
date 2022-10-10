@@ -9,5 +9,4 @@ public class QueryUserInfoResponse {
 
     private final String email;
     private final String name;
-    private final Integer money;
 }
