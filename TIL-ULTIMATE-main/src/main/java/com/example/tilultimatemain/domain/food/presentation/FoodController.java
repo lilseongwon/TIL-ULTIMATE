@@ -27,7 +27,7 @@ public class FoodController {
     private final QueryFoodInfoService queryFoodInfoService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/")
+    @PostMapping
     public void addFood(@RequestBody @Valid FoodRequest request) {
         addFoodService.execute(request);
     }
@@ -59,7 +59,7 @@ public class FoodController {
         return queryFoodsByCategoryService.execute(category);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public QueryFoodListResponse queryFoodList() {
         return queryFoodListService.execute();
     }

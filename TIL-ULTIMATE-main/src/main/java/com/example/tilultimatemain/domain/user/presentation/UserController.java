@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/")
+    @DeleteMapping
     public void withdrawl() {
         withdrawlService.execute();
     }
@@ -58,7 +58,7 @@ public class UserController {
         return tokenRefreshService.execute(refreshToken);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public QueryUserInfoResponse queryMyInfo() {
         return queryMyinfoService.execute();
     }
