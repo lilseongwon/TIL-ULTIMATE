@@ -11,4 +11,5 @@ public class QueryFoodInfoResponse {
     private final Category category;
     private final String explain;
     private final String picture;
+    private final Integer price;
 }
