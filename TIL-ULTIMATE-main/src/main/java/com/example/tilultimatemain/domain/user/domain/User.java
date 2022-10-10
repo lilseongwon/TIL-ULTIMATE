@@ -1,11 +1,13 @@
 package com.example.tilultimatemain.domain.user.domain;
 
+import com.example.tilultimatemain.domain.order.domain.Order;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -23,6 +25,9 @@ public class User {
 
     @Column(length = 10, nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Order> orderList;
 
     @Builder
     public User(String email, String password, String name) {
