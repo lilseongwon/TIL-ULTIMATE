@@ -18,9 +18,6 @@ public class FoodRequest {
 
     private Category category;
 
-    @NotBlank(message = "stock은 Null 또는 공백 또는 띄어쓰기를 허용하지 않습니다.")
-    private Integer stock;
-
     @Size(min = 1, max= 500, message = "explain은 최대 500자 입니다.")
     private String explain;
 
