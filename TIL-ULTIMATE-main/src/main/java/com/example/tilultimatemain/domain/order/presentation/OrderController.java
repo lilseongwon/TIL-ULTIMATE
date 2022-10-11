@@ -1,7 +1,9 @@
 package com.example.tilultimatemain.domain.order.presentation;
 
 import com.example.tilultimatemain.domain.order.presentation.request.AddOrderRequest;
+import com.example.tilultimatemain.domain.order.presentation.response.QueryOrderListResponse;
 import com.example.tilultimatemain.domain.order.service.AddOrderService;
+import com.example.tilultimatemain.domain.order.service.QueryOrderListService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import javax.validation.Valid;
 @RequestMapping("/order")
 public class OrderController {
     private final AddOrderService addOrderService;
+    private final QueryOrderListService queryOrderListService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{food-id}")
@@ -20,5 +23,8 @@ public class OrderController {
         addOrderService.execute(id, request);
     }
 
-
+    @GetMapping
+    public QueryOrderListResponse queryOrderList() {
+        return queryOrderListService.execute();
+    }
 }
