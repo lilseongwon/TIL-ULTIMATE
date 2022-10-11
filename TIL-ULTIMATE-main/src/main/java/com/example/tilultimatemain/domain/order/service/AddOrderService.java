@@ -27,8 +27,8 @@ public class AddOrderService {
 
         orderRepository.save(Order
                 .builder()
-                .foodId(food)
-                .userId(user)
+                .food(food)
+                .user(user)
                 .sum(request.getSum())
                 .price(orderFacade.getPrice(id, request.getSum()))
                 .build());
