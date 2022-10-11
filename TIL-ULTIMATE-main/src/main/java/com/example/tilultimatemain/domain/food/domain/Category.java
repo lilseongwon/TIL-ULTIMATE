@@ -8,9 +8,9 @@ import lombok.Getter;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @AllArgsConstructor
 public enum Category {
-    PASTA("파스타", "s3://til-ultimate/pasta.jpg"),
-    SALAD("샐러드", "s3://til-ultimate/rice.jpg"),
-    RICE("볶음밥", "s3://til-ultimate/salad.jpg");
+    PASTA("파스타", "https://til-ultimate.s3.ap-northeast-2.amazonaws.com/pasta.jpg"),
+    SALAD("샐러드", "https://til-ultimate.s3.ap-northeast-2.amazonaws.com/rice.jpg"),
+    RICE("볶음밥", "https://til-ultimate.s3.ap-northeast-2.amazonaws.com/salad.jpg");
 
     private final String name;
     private final String picture;
