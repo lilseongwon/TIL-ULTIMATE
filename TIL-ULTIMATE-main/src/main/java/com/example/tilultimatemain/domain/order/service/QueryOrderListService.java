@@ -21,7 +21,7 @@ public class QueryOrderListService {
     @Transactional
     public QueryOrderListResponse execute() {
         userFacade.checkPermission();
-        List<QueryOrderResponse> orderResponseList = orderRepository.findAllByCreatedAtAndStatus(LocalDate.now(), Status.COOK)
+        List<QueryOrderResponse> orderResponseList = orderRepository.findAllByStatus(Status.COOK)
                 .stream()
                 .map(QueryOrderResponse::of).toList();
         return new QueryOrderListResponse(orderResponseList);

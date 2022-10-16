@@ -10,6 +10,6 @@ import java.util.List;
 
 
 public interface OrderRepository extends CrudRepository<Order, Long> {
-    List<Order> findAllByCreatedAtAndStatus(LocalDate createdAt, Status status);
-    List<Order> findAllByUserId(User user);
+    List<Order> findAllByStatus(Status status);
+    List<Order> findAllByUser(User user);
 }
