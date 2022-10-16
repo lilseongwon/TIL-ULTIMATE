@@ -18,9 +18,6 @@ public class QueryMyinfoService {
 
         User user = userFacade.getCurrentUser();
 
-        return QueryUserInfoResponse.builder()
-                .email(user.getEmail())
-                .name(user.getName())
-                .build();
+        return QueryUserInfoResponse.of(user);
     }
 }
