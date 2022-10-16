@@ -21,6 +21,7 @@ public class QueryFoodInfoService {
                 .category(food.getCategory())
                 .explain(food.getExplain())
                 .picture(food.getPicture())
+                .price(food.getPrice())
                 .build();
     }
 }
