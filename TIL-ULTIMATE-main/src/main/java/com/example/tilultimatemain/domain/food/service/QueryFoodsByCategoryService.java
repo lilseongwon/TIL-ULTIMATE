@@ -17,7 +17,7 @@ public class QueryFoodsByCategoryService {
 
     @Transactional
     public QueryFoodListResponse execute(Category category) {
-        List<QueryFoodResponse> foodResponseList = foodRepository.findAllByCategoryContains(category)
+        List<QueryFoodResponse> foodResponseList = foodRepository.findAllByCategory(category)
                 .stream()
                 .map(QueryFoodResponse::of).toList();
         return new QueryFoodListResponse(foodResponseList);

@@ -11,7 +11,7 @@ public interface FoodRepository extends CrudRepository<Food, Long> {
     Optional<Food> findByName(String name);
     List<Food> findAllByOrderByIdDesc();
 
-    List<Food> findAllByCategoryContains(Category category);
+    List<Food> findAllByCategory(Category category);
 
     List<Food> findAllByNameContains(String keyword);
 }
