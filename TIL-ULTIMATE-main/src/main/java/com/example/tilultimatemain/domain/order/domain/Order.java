@@ -25,8 +25,6 @@ public class Order extends BaseTimeEntity {
     @JoinColumn(name = "food_id", nullable = false)
     private Food food;
 
-    @JsonBackReference
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -50,6 +48,6 @@ public class Order extends BaseTimeEntity {
     }
 
     public void completeCook() {
-        this.status = Status.valueOf("COMPLETE");
+        this.status = Status.COMPLETE;
     }
 }
