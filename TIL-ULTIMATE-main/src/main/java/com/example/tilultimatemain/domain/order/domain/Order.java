@@ -3,6 +3,8 @@ package com.example.tilultimatemain.domain.order.domain;
 import com.example.tilultimatemain.domain.food.domain.Food;
 import com.example.tilultimatemain.domain.user.domain.User;
 import com.example.tilultimatemain.global.entity.BaseTimeEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,12 +22,14 @@ public class Order extends BaseTimeEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "food", nullable = false)
-    private Food foodId;
+    @JoinColumn(name = "food_id", nullable = false)
+    private Food food;
 
+    @JsonBackReference
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user", nullable = false)
-    private User userId;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(nullable = false)
     private Integer sum;
@@ -37,15 +41,15 @@ public class Order extends BaseTimeEntity {
     private Status status;
 
     @Builder
-    public Order(Food foodId, User userId, Integer sum, Integer price) {
-        this.foodId = foodId;
-        this.userId = userId;
+    public Order(Food food, User user, Integer sum, Integer price) {
+        this.food = food;
+        this.user = user;
         this.status = Status.COOK;
         this.sum = sum;
         this.price = price;
     }
 
     public void completeCook() {
-        this.status = Status.COMPLETE;
+        this.status = Status.valueOf("COMPLETE");
     }
 }
