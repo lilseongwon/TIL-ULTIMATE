@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -29,7 +30,11 @@ public class Food {
 
     private String picture;
 
+    @Column(nullable = false)
     private Integer price;
+
+    @OneToMany(mappedBy = "food", cascade = CascadeType.REMOVE)
+    private List<Order> orderList;
 
     @Builder
     public Food(String name, Category category, String explain, String picture, Integer price) {
