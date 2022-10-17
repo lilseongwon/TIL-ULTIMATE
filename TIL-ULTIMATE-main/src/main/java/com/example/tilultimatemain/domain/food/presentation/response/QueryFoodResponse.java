@@ -8,6 +8,7 @@ import lombok.Getter;
 @Getter
 @Builder
 public class QueryFoodResponse {
+    private final Long id;
     private final String name;
     private final Category category;
     private final String picture;
@@ -15,6 +16,7 @@ public class QueryFoodResponse {
 
     public static QueryFoodResponse of(Food food) {
         return QueryFoodResponse.builder()
+                .id(food.getId())
                 .name(food.getName())
                 .category(food.getCategory())
                 .picture(food.getPicture())

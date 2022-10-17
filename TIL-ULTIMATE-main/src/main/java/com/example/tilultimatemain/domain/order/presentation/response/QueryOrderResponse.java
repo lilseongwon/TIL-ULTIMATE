@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @Getter
 @Builder
 public class QueryOrderResponse {
+    private final Long id;
     private final QueryFoodResponse food;
     private final QueryUserInfoResponse user;
     private final LocalDate createdAt;
@@ -21,6 +22,7 @@ public class QueryOrderResponse {
 
     public static QueryOrderResponse of(Order order) {
         return QueryOrderResponse.builder()
+                .id(order.getId())
                 .createdAt(order.getCreatedAt())
                 .food(QueryFoodResponse.of(order.getFood()))
                 .user(QueryUserInfoResponse.of(order.getUser()))
