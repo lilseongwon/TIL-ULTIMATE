@@ -1,7 +1,6 @@
 package com.example.tilultimatemain.domain.user.domain;
 
 import com.example.tilultimatemain.domain.order.domain.Order;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
