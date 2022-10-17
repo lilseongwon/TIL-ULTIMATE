@@ -18,7 +18,7 @@ public class QueryMyOrderService {
 
     public QueryOrderListResponse execute() {
         User user = userFacade.getCurrentUser();
-        List<QueryOrderResponse> orderResponseList = orderRepository.findAllByUserId(user)
+        List<QueryOrderResponse> orderResponseList = orderRepository.findAllByUser(user)
                 .stream()
                 .map(QueryOrderResponse::of).toList();
         return new QueryOrderListResponse(orderResponseList);
