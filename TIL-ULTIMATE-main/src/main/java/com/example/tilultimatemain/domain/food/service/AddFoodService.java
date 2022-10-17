@@ -1,7 +1,7 @@
 package com.example.tilultimatemain.domain.food.service;
 
 import com.example.tilultimatemain.domain.food.domain.Food;
-import com.example.tilultimatemain.domain.food.facade.FoodFacade;
+import com.example.tilultimatemain.domain.food.exception.FoodExistException;
 import com.example.tilultimatemain.domain.food.domain.repository.FoodRepository;
 import com.example.tilultimatemain.domain.food.presentation.request.FoodRequest;
 import com.example.tilultimatemain.domain.user.facade.UserFacade;
@@ -14,12 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class AddFoodService {
     private final FoodRepository foodRepository;
     private final UserFacade userFacade;
-    private final FoodFacade foodFacade;
 
     @Transactional
     public void execute(FoodRequest request) {
         userFacade.checkPermission();
-        foodFacade.checkFoodExist(request.getName());
+        checkFoodExist(request.getName());
 
         foodRepository.save(
                 Food.builder()
@@ -29,5 +28,10 @@ public class AddFoodService {
                         .picture(request.getPicture())
                         .price(request.getPrice())
                         .build());
+    }
+
+    private void checkFoodExist(String name) {
+        if(foodRepository.findByName(name).isPresent())
+            throw FoodExistException.EXCEPTION;
     }
 }

@@ -18,7 +18,6 @@ public class AddOrderService {
     private final OrderRepository orderRepository;
     private final UserFacade userFacade;
     private final FoodFacade foodFacade;
-    private final OrderFacade orderFacade;
 
     @Transactional
     public void execute(Long id, AddOrderRequest request) {
@@ -30,7 +29,12 @@ public class AddOrderService {
                 .food(food)
                 .user(user)
                 .sum(request.getSum())
-                .price(orderFacade.getPrice(id, request.getSum()))
+                .price(getPrice(id, request.getSum()))
                 .build());
+    }
+
+    private Integer getPrice(Long id, Integer sum) {
+        Food food = foodFacade.getFoodById(id);
+        return food.getPrice() * sum;
     }
 }
