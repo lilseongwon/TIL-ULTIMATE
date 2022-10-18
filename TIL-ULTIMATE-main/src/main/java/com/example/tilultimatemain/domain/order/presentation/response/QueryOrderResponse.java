@@ -1,10 +1,8 @@
 package com.example.tilultimatemain.domain.order.presentation.response;
 
-import com.example.tilultimatemain.domain.food.domain.Food;
 import com.example.tilultimatemain.domain.food.presentation.response.QueryFoodResponse;
 import com.example.tilultimatemain.domain.order.domain.Order;
 import com.example.tilultimatemain.domain.order.domain.Status;
-import com.example.tilultimatemain.domain.user.domain.User;
 import com.example.tilultimatemain.domain.user.presentation.response.QueryUserInfoResponse;
 import lombok.Builder;
 import lombok.Getter;
