@@ -1,9 +1,6 @@
-server:
-  port: ${PORT}
-
 spring:
   datasource:
-    url: ${DB-URL}
+    url: ${DB_URL}
     username: ${USERNAME}
     password: ${PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -24,38 +21,21 @@ spring:
     property-naming-strategy: SNAKE_CASE
 
 jwt:
-  secret: ${SECRET-KEY}
-  access_exp: ${ACCESS-EXP}
-  refresh_exp: ${REFRESH-EXP}
+  secret: ${SECRET_KEY}
+  access_exp: ${ACCESS_EXP}
+  refresh_exp: ${REFRESH_EXP}
 
 redis:
-  host: ${REDIS-HOST}
-  port: ${REDIS-PORT}
+  host: ${REDIS_HOST}
+  port: ${REDIS_PORT}
 
 auth:
-  google:
-    base-url: ${GOOGLE-BASE-URL}
-    client-id: ${GOOGLE-CLIENT-ID}
-    client-secret: ${GOOGLE-SECRET}
-    redirect-url: ${GOOGLE-REDIRECT-URL}
-
   kakao:
-    base-url: ${KAKAO-BASE-URL}
-    client-id: ${KAKAO-CLIENT-ID}
-    client-secret: ${KAKAO-SECRET}
-    redirect-url: ${KAKAO-REDIRECT-URL}
+    base-url: ${KAKAO_BASE_URL}
+    client-id: ${KAKAO_CLIENT_ID}
+    redirect-url: ${KAKAO_REDIRECT_URL}
 
 admin:
   email: ${ADMIN-EMAIL}
-
-cloud:
-  aws:
-    s3:
-      bucket: ${S3-BUCKET}
-    stack:
-      auto: false
-    credentials:
-      access-key: ${S3-ACCESS-KEY}
-      secret-key: ${S3-SECRET-KEY}
 
 spring.main.allow-bean-definition-overriding: true

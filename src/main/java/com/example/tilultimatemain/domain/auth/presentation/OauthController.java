@@ -1,7 +1,6 @@
 package com.example.tilultimatemain.domain.auth.presentation;
 
 import com.example.tilultimatemain.domain.auth.presentation.response.TokenResponse;
-import com.example.tilultimatemain.domain.auth.service.GoogleAuthService;
 import com.example.tilultimatemain.domain.auth.service.KakaoAuthService;
 import com.example.tilultimatemain.global.util.auth.QueryGoogleAuthLinkService;
 import com.example.tilultimatemain.global.util.auth.QueryKakaoAuthLinkService;
@@ -13,20 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 public class OauthController {
-    private final GoogleAuthService googleAuthService;
-    private final QueryGoogleAuthLinkService queryGoogleAuthLinkService;
     private final KakaoAuthService kakaoAuthService;
     private final QueryKakaoAuthLinkService queryKakaoAuthLinkService;
-
-    @GetMapping("/google/auth")
-    public String queryGoogleAuthLink() {
-        return queryGoogleAuthLinkService.execute();
-    }
-
-    @GetMapping("/google/receiveCode")
-    public TokenResponse googleAuthLogin(@RequestParam("code") String code) {
-        return googleAuthService.execute(code);
-    }
 
     @GetMapping("/kakao/auth")
     public String queryKakaoAuthLink() {

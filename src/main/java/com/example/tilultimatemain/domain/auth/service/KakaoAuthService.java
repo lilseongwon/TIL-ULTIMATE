@@ -11,7 +11,6 @@ import com.example.tilultimatemain.global.security.jwt.JwtTokenProvider;
 import com.example.tilultimatemain.infrastructure.feign.client.KakaoAuth;
 import com.example.tilultimatemain.infrastructure.feign.client.KakaoInfo;
 import com.example.tilultimatemain.infrastructure.feign.dto.request.KakaoCodeRequest;
-import com.example.tilultimatemain.infrastructure.feign.dto.response.GoogleInfoResponse;
 import com.example.tilultimatemain.infrastructure.feign.dto.response.KakaoInfoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
