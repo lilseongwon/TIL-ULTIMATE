@@ -36,6 +36,6 @@ auth:
     redirect-url: ${KAKAO_REDIRECT_URL}
 
 admin:
-  email: ${ADMIN-EMAIL}
+  email: ${ADMIN_EMAIL}
 
 spring.main.allow-bean-definition-overriding: true
