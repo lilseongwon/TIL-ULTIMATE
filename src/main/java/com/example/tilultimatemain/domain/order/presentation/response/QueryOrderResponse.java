@@ -1,5 +1,6 @@
 package com.example.tilultimatemain.domain.order.presentation.response;
 
+import com.example.tilultimatemain.domain.food.domain.Food;
 import com.example.tilultimatemain.domain.food.presentation.response.QueryFoodResponse;
 import com.example.tilultimatemain.domain.order.domain.Order;
 import com.example.tilultimatemain.domain.order.domain.Status;
@@ -17,6 +18,9 @@ public class QueryOrderResponse {
     private final QueryUserInfoResponse user;
     private final LocalDate createdAt;
     private final Status status;
+    private Integer sum;
+    private Integer price;
+
 
     public static QueryOrderResponse of(Order order) {
         return QueryOrderResponse.builder()
@@ -24,6 +28,9 @@ public class QueryOrderResponse {
                 .createdAt(order.getCreatedAt())
                 .food(QueryFoodResponse.of(order.getFood()))
                 .user(QueryUserInfoResponse.of(order.getUser()))
-                .status(order.getStatus()).build();
+                .status(order.getStatus())
+                .sum(order.getSum())
+                .price(order.getPrice())
+                .build();
     }
 }
